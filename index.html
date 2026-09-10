@@ -273,6 +273,8 @@
     font-family:var(--mono);font-size:.62rem;color:var(--gold)}
   .lessons{counter-reset:l}
   .btnrow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .unit .sub{margin:14px 0 9px;font-size:.84rem;color:var(--muted);text-align:center}
+  .btn.wide{width:100%}
 
   .feniks{position:relative;border:1px solid var(--gold);border-radius:14px;
     background:linear-gradient(165deg,#fffaf3,var(--raised));padding:24px 20px;
@@ -309,18 +311,28 @@
   .show p{font-size:.9rem;color:var(--muted);margin:0 0 16px}
 
   /* ---------- контакты ---------- */
-  .links{display:flex;flex-direction:column;gap:10px}
-  .link{display:flex;align-items:baseline;gap:14px;text-decoration:none;color:inherit;
-    border-bottom:1px solid var(--line);padding:12px 2px;
-    transition:border-color .2s ease,color .2s ease,padding-left .2s ease}
-  .link:hover,.link:focus-visible{border-color:var(--red);color:var(--red);
-    padding-left:8px;outline:none}
-  .link:hover .ar{transform:translateX(5px);color:var(--red)}
-  .link .ar{transition:transform .2s ease,color .2s ease}
-  .link b{font-family:var(--mono);font-size:.82rem;font-weight:500;letter-spacing:.08em;
-    text-transform:uppercase;flex:none;min-width:92px}
-  .link span{font-size:.86rem;color:var(--muted);line-height:1.4}
-  .link .ar{margin-left:auto;color:var(--gold);flex:none}
+  .links{display:flex;flex-direction:column;gap:11px}
+  .link{position:relative;display:grid;grid-template-columns:1fr auto;align-items:center;gap:14px;
+    text-decoration:none;color:inherit;background:var(--surface);
+    border:1px solid var(--line);border-radius:13px;padding:15px 16px;
+    box-shadow:var(--shadow-1);
+    transition:transform .2s cubic-bezier(.2,.7,.3,1),border-color .2s ease,
+      box-shadow .2s ease,background .2s ease}
+  .link:hover,.link:focus-visible{transform:translateY(-3px);border-color:var(--gold);
+    background:#fff;box-shadow:0 16px 34px -22px rgba(41,41,41,.5);outline:none}
+  .link:active{transform:translateY(-1px) scale(.995)}
+  .link:focus-visible{box-shadow:0 0 0 3px var(--gold-soft)}
+  .link b{display:block;font-family:var(--mono);font-size:.9rem;font-weight:600;
+    letter-spacing:.05em;text-transform:uppercase;margin-bottom:3px}
+  .link span{display:block;font-size:.85rem;color:var(--muted);line-height:1.4}
+  .link .ar{display:flex;align-items:center;justify-content:center;flex:none;
+    width:38px;height:38px;border-radius:50%;
+    background:var(--red);color:#fff;font-size:1rem;
+    box-shadow:0 6px 14px -7px rgba(221,41,41,.8);
+    transition:background .25s ease,color .25s ease,transform .2s ease}
+  .link:hover .ar,.link:focus-visible .ar,.link:active .ar{
+    background:var(--gold);color:#2b1d05;transform:translateX(3px) scale(1.06)}
+  .link .meta-note{margin-top:8px;font-size:.68rem;line-height:1.45;color:var(--muted)}
 
   footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line)}
   .fine{font-size:.72rem;line-height:1.55;color:var(--muted);margin:0}
@@ -333,9 +345,6 @@
     .thumb{width:76px;height:76px}
     .cbody{padding-right:0}
     .price{position:static;grid-column:2;grid-row:2;justify-self:start;margin:9px 0 0}
-    .link{flex-wrap:wrap;gap:4px 14px}
-    .link b{min-width:0}
-    .link span{width:100%}
     .btnrow{grid-template-columns:1fr}
     .award{top:auto;bottom:14px;transform:none}
   }
@@ -379,8 +388,10 @@
       <h3>Ваш код успеха</h3>
       <p class="hook">Почему одни эксперты становятся востребованными, а другие остаются невидимыми?</p>
       <p>В вашей дате рождения есть подсказки о том, как вам легче проявляться, раскрывать свои сильные стороны и двигаться к успеху.</p>
-      <p class="mask">ДД · ММ · ГГГГ</p>
-      <a class="btn" href="#kod">Узнать свой код успеха <span class="ar">→</span></a>
+      <div class="btnrow">
+        <a class="btn" href="https://t.me/Tatyanatregub_bot?start=dl-1758028679495">Узнать в Telegram <span class="ar">→</span></a>
+        <a class="btn ghost" href="https://max.ru/id645328396107_bot?start=dl-1780911828811">Узнать в MAX <span class="ar">→</span></a>
+      </div>
       <p class="after">Пришли после моего выступления? Начните отсюда.</p>
     </div>
   </section>
@@ -464,8 +475,11 @@
       <li>Уроки души, потенциал и самые слабые зоны по дате рождения</li>
       <li>Знакомство с матрицей</li>
     </ul>
-    <a class="btn" href="https://num.tatyanatregub.ru/">Получить 3 бесплатных урока <span class="ar">→</span></a>
-    <p class="after">Доступ придёт на электронную почту — проверьте и папку «Спам».</p>
+    <div class="btnrow">
+      <a class="btn" href="https://num.tatyanatregub.ru/">3 бесплатных урока <span class="ar">→</span></a>
+      <a class="btn ghost" href="https://tatyanatregub.ru/numerolog/">Программа полного курса <span class="ar">→</span></a>
+    </div>
+    <p class="after">Доступ к урокам придёт на электронную почту — проверьте и папку «Спам».</p>
   </section>
 
   <section class="unit">
@@ -473,9 +487,11 @@
     <p class="ueyebrow">бесплатный экспресс-курс</p>
     <h3>Программные свечи</h3>
     <p>Мини-курс для тех, кто хочет освоить создание программных свечей и превратить знания в новое дело.</p>
+    <a class="btn wide" href="https://bothelp.cc/mini?domain=tatyanatregub&amp;id=10">Забрать бесплатные уроки <span class="ar">→</span></a>
+    <p class="sub">Узнать программу полного курса — напишите мне:</p>
     <div class="btnrow">
-      <a class="btn" href="https://t.me/Tatyanatregub_bot?domain=Tatyanatregub_bot&amp;start=ml10-6148">Забрать в Telegram <span class="ar">→</span></a>
-      <a class="btn ghost" href="https://max.ru/id645328396107_bot?start=ml10-6148">Забрать в MAX <span class="ar">→</span></a>
+      <a class="btn ghost" href="https://t.me/Tatyana_Tregub">Написать в Telegram <span class="ar">→</span></a>
+      <a class="btn ghost" href="https://max.ru/u/f9LHodD0cOIl2rEEKBKefm4NiPYVWPZos_wN0130saM1aIJqJQkLQYJiruM">Написать в MAX <span class="ar">→</span></a>
     </div>
   </section>
 
@@ -543,18 +559,22 @@
 
   <div class="links">
     <a class="link" href="https://t.me/numerologtatyanatregub">
-      <b>Telegram</b><span>Нумерология, личный бренд, деньги, проявленность и мои проекты.</span><span class="ar">→</span>
+      <div><b>Telegram</b><span>Нумерология, личный бренд, деньги, проявленность и мои проекты.</span></div>
+      <span class="ar">→</span>
     </a>
     <a class="link" href="https://www.instagram.com/tregub_tatyana_">
-      <b>Instagram</b><span>Личная жизнь, закулисье проектов, эфиры и новые выпуски.</span><span class="ar">→</span>
+      <div><b>Instagram</b><span>Личная жизнь, закулисье проектов, эфиры и новые выпуски.</span>
+        <span class="meta-note">Instagram принадлежит компании Meta, признанной в России экстремистской организацией и запрещённой на территории РФ.</span></div>
+      <span class="ar">→</span>
     </a>
     <a class="link" href="https://max.ru/id645328396107_biz">
-      <b>MAX</b><span>Канал в MAX.</span><span class="ar">→</span>
+      <div><b>MAX</b><span>Мой канал в MAX.</span></div>
+      <span class="ar">→</span>
     </a>
   </div>
 
   <footer>
-    <p class="fine">Instagram принадлежит компании Meta, признанной в России экстремистской организацией и запрещённой на территории РФ.</p>
+    <p class="fine">Татьяна Трегуб &middot; нумеролог, психолог, педагог, предприниматель</p>
   </footer>
 </div>
 
