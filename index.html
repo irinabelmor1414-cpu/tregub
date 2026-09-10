@@ -228,9 +228,9 @@
   .price.free{color:var(--gold);border-color:var(--gold)}
 
   /* ---------- значок премии ---------- */
-  .award{position:fixed;z-index:6;right:clamp(6px,2vw,18px);top:50%;
-    transform:translateY(-50%);pointer-events:none;
-    width:clamp(58px,13vw,104px);filter:drop-shadow(0 6px 18px rgba(41,41,41,.28))}
+  .award{position:fixed;z-index:6;right:clamp(6px,2vw,18px);
+    top:clamp(3cm,14vh,5cm);pointer-events:none;
+    width:clamp(62px,15vw,104px);filter:drop-shadow(0 6px 18px rgba(41,41,41,.28))}
   .award img{display:block;width:100%;height:auto;
     animation:sway 7s ease-in-out infinite alternate}
   @keyframes sway{from{transform:translateY(-5px) rotate(-3deg)}to{transform:translateY(5px) rotate(3deg)}}
@@ -399,7 +399,6 @@
     .cbody{padding-right:0}
     .price{position:static;grid-column:2;grid-row:2;justify-self:start;margin:9px 0 0}
     .btnrow{grid-template-columns:1fr}
-    .award{top:auto;bottom:14px;transform:none}
   }
 </style>
 
