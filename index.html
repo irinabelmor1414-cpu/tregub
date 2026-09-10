@@ -190,7 +190,7 @@
     text-transform:uppercase;color:var(--muted);margin-top:5px}
   .glyph .mark{font-family:var(--display);font-size:2.1rem;line-height:1;color:var(--gold)}
 
-  .thumb{width:88px;height:88px;border-radius:10px;overflow:hidden;flex:none;
+  .thumb{position:relative;width:88px;height:88px;border-radius:10px;overflow:hidden;flex:none;
     background:var(--raised);border:1px solid var(--line);transition:border-color .2s ease}
   .card:hover .thumb{border-color:var(--gold)}
   .thumb img{display:block;width:100%;height:100%;object-fit:cover;
@@ -336,6 +336,59 @@
 
   footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line)}
   .fine{font-size:.72rem;line-height:1.55;color:var(--muted);margin:0}
+
+
+  /* ---------- живая подсветка: работает без мыши, на телефоне тоже ---------- */
+  .thumb img,.efir .pic img{animation:livezoom 11s ease-in-out infinite alternate}
+  @keyframes livezoom{from{transform:scale(1)}to{transform:scale(1.09)}}
+
+  .thumb::after,.efir .pic::after{content:"";position:absolute;top:0;bottom:0;left:0;width:60%;
+    z-index:2;pointer-events:none;
+    background:linear-gradient(100deg,transparent,rgba(255,234,198,.55),transparent);
+    transform:translateX(-200%);animation:shine 5.6s ease-in-out infinite}
+  @keyframes shine{0%,64%{transform:translateX(-200%)}100%{transform:translateX(320%)}}
+
+  .card,.efir{animation:breathe-card 5.6s ease-in-out infinite}
+  @keyframes breathe-card{
+    0%,100%{border-color:var(--line);box-shadow:var(--shadow-1)}
+    50%{border-color:var(--gold-lit);box-shadow:0 14px 30px -22px rgba(41,41,41,.55)}}
+
+  .price.free{animation:freepulse 5.6s ease-in-out infinite}
+  @keyframes freepulse{
+    0%,100%{background:var(--gold-soft);color:var(--gold);border-color:transparent}
+    50%{background:var(--gold);color:#fff;border-color:var(--gold)}}
+
+  .cgo,.efir .meta em{animation:gopulse 5.6s ease-in-out infinite}
+  @keyframes gopulse{0%,100%{color:var(--gold);opacity:.75}50%{color:var(--red);opacity:1}}
+
+  .link .ar{animation:arpulse 5s ease-in-out infinite}
+  @keyframes arpulse{0%,100%{background:var(--red);color:#fff}
+    50%{background:var(--gold);color:#2b1d05}}
+
+  /* волной: каждый следующий вступает позже */
+  .stack .card:nth-child(2),.efirs .efir:nth-child(2),.links .link:nth-child(2),
+  .stack .card:nth-child(2) .thumb::after,.efirs .efir:nth-child(2) .pic::after,
+  .stack .card:nth-child(2) .price.free,.stack .card:nth-child(2) .cgo,
+  .links .link:nth-child(2) .ar{animation-delay:.55s}
+  .stack .card:nth-child(3),.efirs .efir:nth-child(3),.links .link:nth-child(3),
+  .stack .card:nth-child(3) .thumb::after,.efirs .efir:nth-child(3) .pic::after,
+  .stack .card:nth-child(3) .price.free,.stack .card:nth-child(3) .cgo,
+  .links .link:nth-child(3) .ar{animation-delay:1.1s}
+  .stack .card:nth-child(4),.stack .card:nth-child(4) .thumb::after,
+  .stack .card:nth-child(4) .price.free,.stack .card:nth-child(4) .cgo{animation-delay:1.65s}
+
+  /* нажатие пальцем и наведение мышью перебивают анимацию */
+  .card:hover,.card:focus-visible,.card:active,
+  .efir:hover,.efir:focus-visible,.efir:active{animation:none}
+  .card:hover .price.free,.card:active .price.free{
+    background:var(--gold);border-color:var(--gold);color:#fff;animation:none}
+  .card:hover .cgo,.card:active .cgo,
+  .efir:hover .meta em,.efir:active .meta em{color:var(--red);opacity:1;animation:none}
+  .card:hover .thumb img,.card:active .thumb img,
+  .efir:hover .pic img,.efir:active .pic img{animation:none;transform:scale(1.07)}
+  .card:active,.efir:active{border-color:var(--gold);background:#fff;
+    transform:translateY(-2px) scale(.995)}
+  .link:hover .ar,.link:focus-visible .ar,.link:active .ar{animation:none}
 
   @media (prefers-reduced-motion:reduce){
     *{animation:none!important;transition:none!important}
@@ -558,6 +611,10 @@
   <div class="shead"><h2>Будем на связи</h2><span>подписаться</span></div>
 
   <div class="links">
+    <a class="link" href="https://max.ru/id645328396107_biz">
+      <div><b>MAX</b><span>Мой канал в MAX: нумерология, проекты и анонсы.</span></div>
+      <span class="ar">→</span>
+    </a>
     <a class="link" href="https://t.me/numerologtatyanatregub">
       <div><b>Telegram</b><span>Нумерология, личный бренд, деньги, проявленность и мои проекты.</span></div>
       <span class="ar">→</span>
@@ -565,10 +622,6 @@
     <a class="link" href="https://www.instagram.com/tregub_tatyana_">
       <div><b>Instagram</b><span>Личная жизнь, закулисье проектов, эфиры и новые выпуски.</span>
         <span class="meta-note">Instagram принадлежит компании Meta, признанной в России экстремистской организацией и запрещённой на территории РФ.</span></div>
-      <span class="ar">→</span>
-    </a>
-    <a class="link" href="https://max.ru/id645328396107_biz">
-      <div><b>MAX</b><span>Мой канал в MAX.</span></div>
       <span class="ar">→</span>
     </a>
   </div>
